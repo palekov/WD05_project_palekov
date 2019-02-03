@@ -6,6 +6,11 @@
   z-index: 2;
 }
 
+.registration-page-form__row {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
 .error {
 	display: block;
 	line-height: 1.3;

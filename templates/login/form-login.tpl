@@ -17,7 +17,7 @@
 	</div>
 
 	<div class="registration-form__password">
-		<input name="password" class="input-text" type="password" placeholder="Пароль" value="ass" />
+		<input name="password" class="input-text" type="password" placeholder="Пароль" value="123456" />
 	</div>
 
 	<div class="password-remember-wrapper">
