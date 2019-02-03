@@ -14,8 +14,8 @@
 <?php 	} else if ( count($error) == 2 ) { ?>
 			
 			<!-- Ошибка с описанием -->
-			<div class="notify no-paddings notification__error mb-20"><?=$error['title']?></div>
-			<div class="notify no-paddings notification__error mb-20">
+			<div class="notification__error mb-20"><?=$error['title']?></div>
+			<div class="notification__error mb-20">
 				<?=$error['desc']?>
 			</div>
 

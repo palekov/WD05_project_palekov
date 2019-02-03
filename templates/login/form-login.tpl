@@ -1,15 +1,23 @@
-<form class="registration-form" method="POST" action="<?=HOST?>login">
+<form class="registration-form" method="POST" action="<?=HOST?>login" novalidate>
 
 	<h1 class="title-1 registration-form__caption">Вход на сайт</h1>
 
-	<?php require ROOT . "templates/_parts/_errors.tpl" ?>
+		<div class="notification">
+
+			<div id="enterEmail" class="notification__title notification--error mb-10 hidden">Введите e-mail</div>
+			<div id="invalidEmail" class="notification__title notification--error mb-10 hidden">Неверный формат email</div>
+			<div id="enterPassword" class="notification__title notification--error mb-10 hidden">Введите пароль</div>
+
+			<?php require ROOT . "templates/_parts/_errors.tpl" ?>
+			
+		</div>
 
 	<div class="registration-form__email">
-		<input name="email" class="input-text" type="text" placeholder="E-mail" value="info@mail.com" />
+		<input name="email" class="input-text" type="email" placeholder="E-mail" value="info@mail.com" />
 	</div>
 
 	<div class="registration-form__password">
-		<input name="password" class="input-text" type="text" placeholder="Пароль" value="123456" />
+		<input name="password" class="input-text" type="password" placeholder="Пароль" value="ass" />
 	</div>
 
 	<div class="password-remember-wrapper">

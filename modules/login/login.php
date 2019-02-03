@@ -29,6 +29,8 @@ if (isset($_POST['login'])) {
 			}	else  {
 					$errors[] = ['title' => 'Пароль введен неверно!'];
 			}
+		}  else {
+			$errors[] = ['title' => 'Пользователь с таким Email не зарегистрирован' ];
 		}
 	}
 

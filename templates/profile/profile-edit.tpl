@@ -24,7 +24,7 @@
 							<div class="row edit-user-profile-form__row">
 								<div class="col-md-4">
 									<label class="label">Email
-										<input name="email" class="input-text" type="text" placeholder="Введите email" value="<?=$currentUser->email?>" />
+										<input name="email" class="input-text" type="email" placeholder="Введите email" value="<?=$currentUser->email?>" />
 									</label>
 								</div>
 							</div>

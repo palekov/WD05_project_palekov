@@ -22,6 +22,12 @@ if (isset($_POST['profile-update']))  {
 		$errors[] = ['title' => 'Введите Email'];
 	}
 
+	//print_r($_FILES);
+
+	if (empty($_FILES['avatar']['name'])) {
+		$errors[] = ['title' => 'Выберите файл с Аватаркой'];
+	}
+
 	// print_r($errors);
 
 	if (empty($errors)) {

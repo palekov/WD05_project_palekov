@@ -8,8 +8,8 @@
 	<?php require ROOT . "templates/_parts/_success.tpl" ?>	
 
 	<?php if($newPasswordReady == false): ?>
-		<div class="registration-form__email">
-			<input name="resetpassword" class="input" type="password" placeholder="Новый пароль" />
+		<div class="registration-form__password">
+			<input name="resetpassword" class="input-text" type="password" placeholder="Новый пароль" />
 		</div>
 	<?php endif ?>
 
