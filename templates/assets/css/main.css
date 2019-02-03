@@ -1,3 +1,7 @@
+.navigation__item--active {
+  border-bottom: none;
+}
+
 .transition {
   -webkit-transition: all 0.2s ease-in;
   -o-transition: all 0.2s ease-in;
@@ -11,6 +15,7 @@
   transition: box-shadow 0.2s ease-in;
   transition: box-shadow 0.2s ease-in, -webkit-box-shadow 0.2s ease-in;
 }
+
 * {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -654,7 +659,7 @@ a.title-medium,
   width: 320px;
   height: 140px;
   border-radius: 6px;
-  background-color: #222222;
+  /* background-color: #222222; */
   background-image: -webkit-gradient(linear, left bottom, left top, from(rgba(23, 46, 103, 0.35)), to(rgba(255, 255, 255, 0)));
   background-image: -webkit-linear-gradient(bottom, rgba(23, 46, 103, 0.35) 0%, rgba(255, 255, 255, 0) 100%);
   background-image: -o-linear-gradient(bottom, rgba(23, 46, 103, 0.35) 0%, rgba(255, 255, 255, 0) 100%);

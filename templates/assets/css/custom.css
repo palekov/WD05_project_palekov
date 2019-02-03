@@ -1,6 +1,6 @@
-/* input.button {
-	padding-top: 0;
-} */
+.navigation__item--active {
+	border-bottom: none;
+}
 
 .profile__button {
   z-index: 2;

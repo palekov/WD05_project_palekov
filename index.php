@@ -19,7 +19,7 @@ $success = array();
 
 switch ( $uri[0]) {
 	case '':
-		include "modules/main/index.php";
+		include ROOT . "modules/main/index.php";
 		break;
 
 	// -------------- users ---------------
@@ -41,7 +41,7 @@ switch ( $uri[0]) {
 		break;
 
 	case 'set-new-password':
-		include "modules/login/set-new-password.php";
+		include ROOT . "modules/login/set-new-password.php";
 		break;
 
 	case 'profile':
@@ -53,15 +53,23 @@ switch ( $uri[0]) {
 		break;			
 
 	case 'contacts':
-		include "modules/contacts/index.php";
+		include ROOT . "modules/contacts/index.php";
 		break;
 
 	case 'blog':
-		include "modules/blog/index.php";
+		include ROOT . "modules/blog/index.php";
+		break;
+
+	case 'blog/post-new':
+		include ROOT . "modules/blog/post-new.php";
+		break;
+
+	case 'blog/post':
+		include ROOT . "modules/blog/post.php";
 		break;
 
 	default:
-		include "modules/main/index.php";
+		include ROOT . "modules/main/index.php";
 		break;
 }
 
