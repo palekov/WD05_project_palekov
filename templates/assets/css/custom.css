@@ -1,9 +1,18 @@
-.navigation__item--active {
-	border-bottom: none;
+/* input.button {
+	padding-top: 0;
+} */
+
+.blog__button--edit {
+	right: 110px;
 }
 
 .profile__button {
   z-index: 2;
+}
+
+.registration-page-form__row {
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .error {

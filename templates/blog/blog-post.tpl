@@ -1,9 +1,10 @@
 
 		<div class="sticky-footer-content">
 			<div class="container user-content pt-70 make-relative">
+				<div class="blog__button--edit"><input class="button button-edit" type="submit" value="Редактировать" name="name" /></div>
 				<div class="row">
 					<div class="col-10 offset-1">
-						<div class="blog__button--edit"><input class="button button-edit" type="submit" value="Редактировать" name="name" /></div>
+						
 						<div class="blog-post">
 							<div class="blog-post-heading-wrapper">
 								<h1 class="blog-post__title title-1"><?=$post['title']?></h1>
@@ -20,7 +21,13 @@
 								</div>
 							</div>
 
-							<img class="blog-post__image" src="<?=HOST?>usercontent/blog/<?=$post['post_img']?>" />
+							<?php if($post->post_img != "")  { ?>
+								<img class="blog-post__image" src="<?=HOST?>usercontent/blog/<?=$post->post_img?>" alt="<?=$post->title?>" />
+							<?php } else { ?>
+								<img class="blog-post__image" src="<?=HOST?>usercontent/blog-no-foto.jpg" alt="<?=$post->title?>" />
+							<?php } ?>
+
+						<!--	<img class="blog-post__image" src="<?=HOST?>usercontent/blog/<?=$post['post_img']?>" />  -->
 
 							<div class="blog-post__content">
 								<?=$post['text']?>

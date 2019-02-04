@@ -1,6 +1,3 @@
-	<?php
-		print_r($_POST);
-	?>
 
 	<div class="sticky-footer-content">
 			<div class="container user-content pt-80 pb-120">

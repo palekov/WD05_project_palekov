@@ -15,6 +15,14 @@ if( isset($_POST['register']) )  {
 		$errors[] = ['title' => 'Введите Пароль!'];
 	}
 
+	// Проверка что пользователь уже существует
+	if ( R::count('users', 'email = ?', array($_POST['email']) ) > 0 ) {
+		$errors[]  = [ 
+						'title' => 'Пользователь с там email уже зарегистрирован', 
+						'desc' => '<p>Используйте другой Email адрес, или воспользуйтесь восстановлением пароля.</p>', 
+					];
+	}
+
 	if (empty($errors))  {
 		$user = R::dispense('users');
 		$user->email = htmlentities($_POST['email']);
