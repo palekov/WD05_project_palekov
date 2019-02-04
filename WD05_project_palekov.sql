@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Фев 03 2019 г., 18:20
+-- Время создания: Фев 04 2019 г., 22:34
 -- Версия сервера: 5.6.41
 -- Версия PHP: 5.5.38
 
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- База данных: `WD05_project_palekov`
+-- База данных: `wd05_project_palekov`
 --
 
 -- --------------------------------------------------------
@@ -40,6 +40,28 @@ CREATE TABLE `about` (
 
 INSERT INTO `about` (`id`, `name`, `description`) VALUES
 (1, 'Сашкус Палеков', 'Я слесарь-программист.');
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `categories`
+--
+
+CREATE TABLE `categories` (
+  `id` int(11) UNSIGNED NOT NULL,
+  `cat_title` varchar(191) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
+
+--
+-- Дамп данных таблицы `categories`
+--
+
+INSERT INTO `categories` (`id`, `cat_title`) VALUES
+(1, 'Путешествия натуралиста'),
+(2, 'Новая'),
+(3, 'Продажи'),
+(4, 'Находки'),
+(6, 'Любопытные факты');
 
 -- --------------------------------------------------------
 
@@ -102,7 +124,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `email`, `password`, `role`, `name`, `surname`, `city`, `country`, `avatar`, `avatar_small`, `recovery_code`, `recovery_code_times`) VALUES
-(22, 'info@mail.com', '$2y$10$0rAAKs6UsReCaA7oK9T9sul2VacBzc6dN43xnHUyjKbG5o/KA6Kqi', 'admin', 'Александр', 'Палеков', 'Витебск', 'Беларусь', '1357929123.jpg', '48-1357929123.jpg', 'QjvBVJCSqO4yAI5', 0),
+(22, 'info@mail.com', '$2y$10$0rAAKs6UsReCaA7oK9T9sul2VacBzc6dN43xnHUyjKbG5o/KA6Kqi', 'admin', 'Александр', 'Палеков', 'Витебск', 'Беларусь', '1357929123.jpg', '48-1357929123.jpg', 'TZagrD4YuV3CjKR', 3),
 (24, 'user@mail.com', '$2y$10$UpQnTJ.daXchDrshEDK5FOvGBDFED4U9TIQ0wexp52R7v8r1qLswa', 'user', 'Александр', 'Палеков', 'Витебск', 'Беларусь', '1369617092.jpg', '48-1369617092.jpg', NULL, NULL),
 (27, 'info3@mail.com', '$2y$10$xRu4Eja4WjAS4HRGBCgr0Ov7axSf63p5D6peH7MfzjJzOYQq6gcje', 'user', 'Василий', 'Тёркин', '', '', '1301214902.bmp', '48-1301214902.bmp', NULL, NULL);
 
@@ -114,6 +136,12 @@ INSERT INTO `users` (`id`, `email`, `password`, `role`, `name`, `surname`, `city
 -- Индексы таблицы `about`
 --
 ALTER TABLE `about`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Индексы таблицы `categories`
+--
+ALTER TABLE `categories`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -138,6 +166,12 @@ ALTER TABLE `users`
 --
 ALTER TABLE `about`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT для таблицы `categories`
+--
+ALTER TABLE `categories`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT для таблицы `posts`

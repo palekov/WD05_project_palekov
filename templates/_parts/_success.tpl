@@ -9,9 +9,7 @@
 			
 			<!-- Ошибка с описанием -->
 			<div class="notification__error error--success mb-20"><?=$item['title']?></div>
-			<div class="notification__error error--success mb-20">
-				<?=$item['desc']?>
-			</div>
+			<div class="notification__error error--success mb-20"><?=$item['desc']?></div>
 
 <?php 
 		}

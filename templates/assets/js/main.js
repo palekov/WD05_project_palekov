@@ -1,7 +1,16 @@
 $(document).ready(function() {
 	
+	// $(".left-panel").customScrollbar({preventDefaultScroll: true});
 
+	// скрываем блок через установленный промежуток времени
+	setTimeout(function(){
+		$('[data-notify-hide]').slideUp(400); 
+	}, 2000);
 	
+	// Скрываем блок по двойному клику
+	$('[data-notify-hide]').dblclick(function() {
+		 $(this).slideUp(400); 
+	});
 });
 
 //Map block

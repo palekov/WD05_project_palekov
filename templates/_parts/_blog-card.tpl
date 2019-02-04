@@ -1,4 +1,4 @@
-					<div class="card-post">
+					<div class="card-post mb-50">
 
 						<div class="card-post__image mb-15">
 

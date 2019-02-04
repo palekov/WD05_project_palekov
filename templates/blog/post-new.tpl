@@ -19,7 +19,10 @@
 								<div class="load-file-title">Изображение </div>
 								<div class="load-file-opis">Изображение jpg или png, рекомендуемая ширина 945px и больше, высота от 400px и более, вес до 2Мб.</div>
 								<div class="load-file-fieldset">
-									<input class="inputfile" id="file-2" type="file" name="postImg" data-multiple-caption="{count} файлов выбрано" multiple="" />
+									<input class="inputfile" id="file-2" type="file" name="postImg"/>
+
+									<!-- data-multiple-caption="{count} файлов выбрано" multiple="" /> -->
+
 									<label for="file-2">Выбрать файл</label>
 									<span>Файл не выбран</span>
 								</div>

@@ -21,7 +21,7 @@
 
 	<!-- build:cssCustom css/main.css -->
 	<link rel="stylesheet" href="<?=HOST?>templates/assets/css/main.css" /><!-- endbuild -->
-
+	<link rel="stylesheet" href="<?=HOST?>templates/assets/css/tables.css" />
 	<link rel="stylesheet" href="<?=HOST?>templates/assets/css/custom.css" />
 
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Merriweather|Open+Sans:400,600,700,800&amp;amp;subset=cyrillic-ext" />
