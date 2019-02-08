@@ -6,7 +6,7 @@
 					<?php  } ?>
 				</div>
 				<div class="admin-panel-user-wrap">
-					<div class="admin-panel-user-wrap__name"><?=$currentUser->name?> <?=$currentUser->surname?></div>
+					<div class="admin-panel-user-wrap__name"><?=$_SESSION['logged_user']['name']?> <?=$_SESSION['logged_user']['surname']?></div>
 					<a class="badge" href="<?=HOST?>profile">Администратор</a>
 				</div>
 			</div>

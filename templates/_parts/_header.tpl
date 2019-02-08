@@ -1,9 +1,8 @@
 <?php
 
-	if (isset($_SESSION['logged_user']) && $_SESSION['login'] == 1 && $_SESSION['role'] == 'admin')  {
-		$currentUser = $_SESSION['logged_user'];
+	if (isAdmin()) {
 		include ROOT . "templates/_parts/_admin-panel.tpl";
-}
+	}
 
 ?>
 

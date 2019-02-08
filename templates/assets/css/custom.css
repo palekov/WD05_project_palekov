@@ -2,6 +2,12 @@
 	padding-top: 0;
 } */
 
+.category-fieldset {
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+
 .blog__button--edit {
 	right: 110px;
 }

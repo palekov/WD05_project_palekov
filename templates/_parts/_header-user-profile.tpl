@@ -10,7 +10,7 @@
 						<div class="user__desc">
 
 							<div class="user__text">
-								<span class="name"><?=$currentUser->name?> <?=$currentUser->surname?></span>
+								<span class="name"><?=$_SESSION['logged_user']['name']?> <?=$_SESSION['logged_user']['surname']?></span>
 								<span class="desc">Пользователь</span>
 							</div>
 

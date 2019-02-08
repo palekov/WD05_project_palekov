@@ -1,7 +1,12 @@
 
 		<div class="sticky-footer-content">
 			<div class="container user-content pt-70 make-relative">
-				<div class="blog__button--edit"><input class="button button-edit" type="submit" value="Редактировать" name="name" /></div>
+				<?php  if (isAdmin()) {  ?>
+				<div class="blog__button--edit">
+					<a class="button button-edit" href="<?=HOST?>blog/post-edit?id=<?=$post['id']?>">Редактировать<a/>
+					<a class="button button-delete" href="<?=HOST?>blog/post-delete?id=<?=$post['id']?>">Удалить<a/>
+				</div>
+				<?php } ?>
 				<div class="row">
 					<div class="col-10 offset-1">
 						
@@ -10,9 +15,11 @@
 								<h1 class="blog-post__title title-1"><?=$post['title']?></h1>
 								<div class="blog-post__info">
 
-									<div class="blog-post__info-name">Емельян Казаков</div>
+									<div class="blog-post__info-name"><?=$post['name']?> <?=$post['surname']?></div>
 
-									<div class="blog-post__info-category"><a href="#!">Путешествия</a></div>
+									<div class="blog-post__info-category">
+										<a href="#!"><?=$post['cat_title']?></a>
+									</div>
 
 									<div class="blog-post__info-date"><? echo rus_date("j F Y H:i", strtotime($post['date_time'])); ?></div>
 
@@ -21,8 +28,8 @@
 								</div>
 							</div>
 
-							<?php if($post->post_img != "")  { ?>
-								<img class="blog-post__image" src="<?=HOST?>usercontent/blog/<?=$post->post_img?>" alt="<?=$post->title?>" />
+							<?php if($post['post_img'] != "")  { ?>
+								<img class="blog-post__image" src="<?=HOST?>usercontent/blog/<?=$post['post_img']?>" alt="<?=$post->title?>" />
 							<?php } else { ?>
 								<img class="blog-post__image" src="<?=HOST?>usercontent/blog-no-foto.jpg" alt="<?=$post->title?>" />
 							<?php } ?>

@@ -15,6 +15,20 @@
 								</label>
 							</div>
 
+							<div class="category-fieldset">
+								<label>
+									<div class="label">Категория</div>
+									<br>
+									<select name="postCat">
+										<?php foreach ($cats as $cat): ?>
+											<option value="<?=$cat['id']?>"><?=$cat['cat_title']?></option>
+										<?php endforeach ?>
+										
+									</select>
+
+								</label>
+							</div>
+
 							<div class="post-add-form__file">
 								<div class="load-file-title">Изображение </div>
 								<div class="load-file-opis">Изображение jpg или png, рекомендуемая ширина 945px и больше, высота от 400px и более, вес до 2Мб.</div>
@@ -29,7 +43,7 @@
 							</div>
 							<div class="post-add-form__textarea">
 								<label class="label">Содержание
-									<textarea class="textarea" type="text" placeholder="Введите содержание поста" name="postText"></textarea>
+									<textarea id="ckEditor" class="textarea" type="text" placeholder="Введите содержание поста" name="postText"></textarea>
 								</label>
 							</div>
 
@@ -45,3 +59,6 @@
 				</div>
 			</div>
 		</div>
+
+		<script src="<?=HOST?>libs/ckeditor/ckeditor.js"></script>
+		
