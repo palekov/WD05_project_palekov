@@ -22,7 +22,9 @@ if ( isset($_POST['postUpdate']) ) {
 		$post->text = ($_POST['postText']);
 		$post->authorId = $_SESSION['logged_user']['id'];
 		$post->updateTime = R::isoDateTime();
+
 		if ( isset($_FILES['postImg']['name']) && $_FILES['postImg']['tmp_name'] != "" ) {
+
 			// Записываем параметры файла в переменные
 			// Записываем имя файла
 			$fileName = $_FILES["postImg"]["name"];
@@ -57,6 +59,9 @@ if ( isset($_POST['postUpdate']) ) {
 			if ( $fileErrorMsg == 1 ) {
 				$errors[] = ['title' => 'При загрузке изображения произошла ошибка. Повторите попытку' ];
 			}
+
+		if (empty($errors)) { 
+
 			// Перемещаем загруженный файл в нужную директорию
 			// создаем случайное имя загруженного файла
 			$db_file_name = rand(100000000000,999999999999) . "." . $fileExt;
@@ -98,6 +103,8 @@ if ( isset($_POST['postUpdate']) ) {
 			// записываем в базу имя маленького файла
 			$post->postImgSmall = "320-" . $db_file_name;
 		}
+	}
+
 		R::store($post);
 		// header('Location: ' . HOST . "profile");		
 		header('Location: ' . HOST . "blog?result=postUpdated");

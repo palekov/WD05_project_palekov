@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Фев 08 2019 г., 21:17
+-- Время создания: Фев 10 2019 г., 11:10
 -- Версия сервера: 5.6.41
 -- Версия PHP: 5.5.38
 
@@ -60,7 +60,31 @@ INSERT INTO `categories` (`id`, `cat_title`) VALUES
 (1, 'Путешествия натуралиста'),
 (3, 'Продажи'),
 (4, 'Находки'),
-(6, 'Любопытные факты');
+(6, 'Любопытные факты'),
+(8, 'Пропажи');
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `comments`
+--
+
+CREATE TABLE `comments` (
+  `id` int(11) UNSIGNED NOT NULL,
+  `post_id` int(11) UNSIGNED DEFAULT NULL,
+  `user_id` int(11) UNSIGNED DEFAULT NULL,
+  `text` varchar(191) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
+  `date_time` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
+
+--
+-- Дамп данных таблицы `comments`
+--
+
+INSERT INTO `comments` (`id`, `post_id`, `user_id`, `text`, `date_time`) VALUES
+(1, 20, 27, 'Замечательный парк, обязательно отправлюсь туда этим летом.', '2019-02-09 15:57:40'),
+(2, 20, 22, 'Бабушка и мама поговаривали о том, что пусть уж лучше идёт на филологический, если нервы ей не позволят заниматься музыкой дальше.', '2019-02-09 23:18:25'),
+(3, 22, 27, 'В просторной фотостудии найдётся реквизит для создания самых ярких образов, а интерьеры подчеркнут смелые идеи моделей. Пополните фотоальбом по специальной цене.', '2019-02-10 10:26:00');
 
 -- --------------------------------------------------------
 
@@ -89,7 +113,8 @@ INSERT INTO `posts` (`id`, `title`, `text`, `author_id`, `date_time`, `post_img`
 (19, 'Новый пост-11', 'Его трудно было назвать стариком. Глаза его были голубыми, брови не казались такими лохматыми, как у их соседа, а в руках он держал букет белых ландышей.\r\n– Вот, – смущённо проговорил он, – берите, не бойтесь, это не из леса, в лесу их не разрешают рвать, это я у себя на даче вырастил. Спасибо. Я давно так не плакал, как сегодня. Это моя любимая мелодия. Вся юность, моя первая любовь вдруг вспомнились. Простите меня, Машенька, – обратился он к смущённой девушке.', 22, '2019-02-03 15:04:48', '1335964519.jpg', '320-1335964519.jpg', '6', NULL),
 (20, 'Новый пост-12', 'В выпускном классе решалась Машина судьба – она либо продолжает заниматься музыкой, либо выбирает себе какую-то другую профессию.\r\nДля выпускного экзамена Маша готовила отрывок из музыки Хачатуряна к фильму «Овод». Ей самой так нравилась мелодия, что у неё начинало учащённо биться сердце. Бабушка и мама поговаривали о том, что пусть уж лучше идёт на филологический, если нервы ей не позволят заниматься музыкой дальше.', 22, '2019-02-03 15:05:07', '1300117858.jpg', '320-1300117858.jpg', '4', NULL),
 (22, 'Очень сильно длинное название заголовка поста для проверки обрезания', 'Какое-либо нибудь содержание', 22, '2019-02-03 17:15:26', '1318020434.jpg', '320-1318020434.jpg', '3', NULL),
-(25, 'Новый пост-777', '<p>В&nbsp;Румлевском парке ими такая проверка проведена, выявлено немало сухостоя, поваленных деревьев и&nbsp;валежника. Все они обследованы, и&nbsp;теперь самое благоприятное время проводить санитарную очистку парка. Получено разрешение областного комитета природных ресурсов и&nbsp;охраны окружающей среды на&nbsp;проведение санитарных рубок, имеем все соответствующие документы, в&nbsp;том числе и&nbsp;лесорубочный билет&raquo;.<br />\r\nЧитать полностью:&nbsp;&nbsp;<a href=\"https://news.tut.by/society/623437.html\">https://news.tut.by/society/623437.html</a></p>\r\n', 22, '2019-02-05 19:21:49', '216137360.jpg', '320-216137360.jpg', '1', '2019-02-06 21:40:44');
+(25, 'Новый пост-777', '<p>В&nbsp;Румлевском парке ими такая проверка проведена, выявлено немало сухостоя, поваленных деревьев и&nbsp;валежника. Все они обследованы, и&nbsp;теперь самое благоприятное время проводить санитарную очистку парка. Получено разрешение областного комитета природных ресурсов и&nbsp;охраны окружающей среды на&nbsp;проведение санитарных рубок, имеем все соответствующие документы, в&nbsp;том числе и&nbsp;лесорубочный билет&raquo;.<br />\r\nЧитать полностью:&nbsp;&nbsp;<a href=\"https://news.tut.by/society/623437.html\">https://news.tut.by/society/623437.html</a></p>\r\n', 22, '2019-02-05 19:21:49', '216137360.jpg', '320-216137360.jpg', '1', '2019-02-06 21:40:44'),
+(26, 'Новый пост-145', '<p>Также на&nbsp;старт эстафеты в&nbsp;составах двух десятков команд вышли известные спортсмены и&nbsp;деятели различных сфер, звезды белорусской эстрады, журналисты.</p>\r\n', 22, '2019-02-10 11:08:15', '1289123696.jpg', '320-1289123696.jpg', '1', NULL);
 
 -- --------------------------------------------------------
 
@@ -109,17 +134,18 @@ CREATE TABLE `users` (
   `avatar` varchar(191) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
   `avatar_small` varchar(191) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
   `recovery_code` varchar(191) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
-  `recovery_code_times` double DEFAULT NULL
+  `recovery_code_times` double DEFAULT NULL,
+  `secondname` varchar(191) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 
 --
 -- Дамп данных таблицы `users`
 --
 
-INSERT INTO `users` (`id`, `email`, `password`, `role`, `name`, `surname`, `city`, `country`, `avatar`, `avatar_small`, `recovery_code`, `recovery_code_times`) VALUES
-(22, 'info@mail.com', '$2y$10$a70VAepekLMt6mnZQlZv6u7QyTChY2pwuehPsWzrj4MfSYw8R2hfO', 'admin', 'Александр', 'Палеков', 'Витебск', 'Беларусь', '1357929123.jpg', '48-1357929123.jpg', 'Y3udB2OZovgpl5f', 0),
-(24, 'user@mail.com', '$2y$10$UpQnTJ.daXchDrshEDK5FOvGBDFED4U9TIQ0wexp52R7v8r1qLswa', 'user', 'Александр', 'Палеков', 'Витебск', 'Беларусь', '1369617092.jpg', '48-1369617092.jpg', NULL, NULL),
-(27, 'info3@mail.com', '$2y$10$xRu4Eja4WjAS4HRGBCgr0Ov7axSf63p5D6peH7MfzjJzOYQq6gcje', 'user', 'Василий', 'Тёркин', '', '', '1345233060.jpg', '48-1345233060.jpg', NULL, NULL);
+INSERT INTO `users` (`id`, `email`, `password`, `role`, `name`, `surname`, `city`, `country`, `avatar`, `avatar_small`, `recovery_code`, `recovery_code_times`, `secondname`) VALUES
+(22, 'info@mail.com', '$2y$10$a70VAepekLMt6mnZQlZv6u7QyTChY2pwuehPsWzrj4MfSYw8R2hfO', 'admin', 'Александр', 'Палеков', 'Витебск', 'Беларусь', '1357929123.jpg', '48-1357929123.jpg', 'Y3udB2OZovgpl5f', 0, NULL),
+(24, 'user@mail.com', '$2y$10$UpQnTJ.daXchDrshEDK5FOvGBDFED4U9TIQ0wexp52R7v8r1qLswa', 'user', 'Александр', 'Палеков', 'Витебск', 'Беларусь', '1369617092.jpg', '48-1369617092.jpg', NULL, NULL, NULL),
+(27, 'info3@mail.com', '$2y$10$xRu4Eja4WjAS4HRGBCgr0Ov7axSf63p5D6peH7MfzjJzOYQq6gcje', 'user', 'Василий', 'Тёркин', '', '', '816883031.jpg', '48-816883031.jpg', NULL, NULL, 'Тёркин');
 
 --
 -- Индексы сохранённых таблиц
@@ -136,6 +162,14 @@ ALTER TABLE `about`
 --
 ALTER TABLE `categories`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Индексы таблицы `comments`
+--
+ALTER TABLE `comments`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `index_foreignkey_comments_post` (`post_id`),
+  ADD KEY `index_foreignkey_comments_user` (`user_id`);
 
 --
 -- Индексы таблицы `posts`
@@ -164,13 +198,19 @@ ALTER TABLE `about`
 -- AUTO_INCREMENT для таблицы `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT для таблицы `comments`
+--
+ALTER TABLE `comments`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT для таблицы `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT для таблицы `users`

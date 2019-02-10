@@ -17,6 +17,20 @@ $(document).ready(function() {
 
 });
 
+
+$('.comment-add__button').on('click', function(e)  {
+	e.preventDefault();
+	comment = $('.leave-comment-form').children('.textarea');
+	if (comment.val()=='') {
+		$('.notification__error').fadeIn();
+		comment.focus(function(event) {
+			$('.notification__error').fadeOut();
+		});
+	}  else  {
+		$('#comment-form').submit();
+	}
+});
+
 //Map block
 
 function initMap() {

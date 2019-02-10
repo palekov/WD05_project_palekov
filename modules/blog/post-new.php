@@ -9,12 +9,6 @@ $title = "Блог - добавить новый пост";
 
 $cats = R::find('categories', 'ORDER BY cat_title ASC');
 
-ob_start();
-include ROOT . "templates/_parts/_header.tpl";
-include ROOT . "templates/blog/post-new.tpl";
-$content = ob_get_contents();
-ob_end_clean();
-
 if (isset($_POST['postNew'])) {
 
 	if (trim($_POST['postTitle']) == '') {
@@ -22,7 +16,7 @@ if (isset($_POST['postNew'])) {
 	}
 
 	if (trim($_POST['postText']) == '') {
-		$errors[] = ['text' => 'Введите текст поста!'];
+		$errors[] = ['title' => 'Введите текст поста!'];
 	}
 
 	if (empty($errors)) {
@@ -33,6 +27,7 @@ if (isset($_POST['postNew'])) {
 		$post->text = $_POST['postText'];
 		$post->authorId = $_SESSION['logged_user']['id'];
 		$post->dateTime = R::isoDateTime();
+	}
 
 		if (isset($_FILES["postImg"]["name"]) && $_FILES["postImg"]["tmp_name"] != "")  {
 			
@@ -49,68 +44,70 @@ if (isset($_POST['postNew'])) {
 			}			
 
 			if (empty($errors)) { 
+
 				list($width, $height) = getimagesize($fileTmpLoc);
 
+				if ($width < 10 || $height < 10)  {
+					$errors[] = ['title' => 'Некорректный размер картинки!'];
+				}
 
-			if ($width < 10 || $height < 10)  {
-				$errors[] = ['title' => 'Некорректный размер картинки!'];
+				if ($fileSize > 4194304) {
+					$errors[] = ['title' => 'Файл не должен быть более 4 Мб!'];	
+				}
+
+				if ($fileErrorMsg == 1)  {
+					$errors[] = ['title' => 'При загрузке изображения произошла ошибка. Повторите попытку!'];
+				}
 			}
 
-			if ($fileSize > 4194304) {
-				$errors[] = ['title' => 'Файл не должен быть более 4 Мб!'];	
-			}
-
-			if ($fileErrorMsg == 1)  {
-				$errors[] = ['title' => 'При загрузке изображения произошла ошибка. Повторите попытку!'];
-			}
-
-			if (empty($errors)) {
+		// --- если не появились ошибки - продолжаем ---
+		if (empty($errors)) {
 	
-			// --- Генерируем случайное имя для файла
-			$db_file_name = rand(10000000000,99999999999) . "." . $fileExt;
-			// --- Перемещаем загруженный файл в нужную директорию ---
-			$postImgFolderLocation = ROOT . 'usercontent/blog/';
-			$uploadfile = $postImgFolderLocation . $db_file_name;
-			$moveResult = move_uploaded_file($fileTmpLoc, $uploadfile);
+				// --- Генерируем случайное имя для файла
+				$db_file_name = rand(10000000000,99999999999) . "." . $fileExt;
+				// --- Перемещаем загруженный файл в нужную директорию ---
+				$postImgFolderLocation = ROOT . 'usercontent/blog/';
+				$uploadfile = $postImgFolderLocation . $db_file_name;
+				$moveResult = move_uploaded_file($fileTmpLoc, $uploadfile);
 
-			if ($moveResult != true)  {
-				$errors[] = ['title' => 'Ошибка сохранения файла!'];
-			} 
+				if ($moveResult != true)  {
+					$errors[] = ['title' => 'Ошибка сохранения файла!'];
+				} 
 
-			include_once(ROOT . "libs/image_resize_imagick.php");
+				include_once(ROOT . "libs/image_resize_imagick.php");
 
-			$target_file = $postImgFolderLocation . $db_file_name;
+				$target_file = $postImgFolderLocation . $db_file_name;
 			
-			$wmax = 920;
-			$hmax = 620;
-			$img = createThumbnailBig($target_file, $wmax, $hmax);
-			$img->writeImage($target_file);
+				$wmax = 920;
+				$hmax = 620;
+				$img = createThumbnailBig($target_file, $wmax, $hmax);
+				$img->writeImage($target_file);
 
-			$post->postImg = $db_file_name;
+				$post->postImg = $db_file_name;
 
-			$target_file = $postImgFolderLocation . $db_file_name;
-			$resized_file = $postImgFolderLocation . "320-" . $db_file_name;
+				$target_file = $postImgFolderLocation . $db_file_name;
+				$resized_file = $postImgFolderLocation . "320-" . $db_file_name;
 
-			$wmax = 320;
-			$hmax = 140;
-			$img = createThumbnailCrop($target_file, $wmax, $hmax);
-			$img->writeImage($resized_file);
+				$wmax = 320;
+				$hmax = 140;
+				$img = createThumbnailCrop($target_file, $wmax, $hmax);
+				$img->writeImage($resized_file);
 
-			$post->postImgSmall = "320-" . $db_file_name;
+				$post->postImgSmall = "320-" . $db_file_name;
 
+				R::store($post);
+				header('Location: ' . HOST . "blog?result=postCreated");
+				exit();
 		}
+	}
+}
 
-		R::store($post);
-		header('Location: ' . HOST . "blog?result=postCreated");
-		exit();
-	}
-	
-}
-		R::store($post);
-		header('Location: ' . HOST . "blog");
-		exit();
-	}
-}
+// готовим контент для центральной части
+ob_start();
+include ROOT . "templates/_parts/_header.tpl";
+include ROOT . "templates/blog/post-new.tpl";
+$content = ob_get_contents();
+ob_end_clean();
 
 // Выводим шаблоны
 include ROOT . "templates/_parts/_head.tpl";

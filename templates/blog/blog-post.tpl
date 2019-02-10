@@ -23,7 +23,11 @@
 
 									<div class="blog-post__info-date"><? echo rus_date("j F Y H:i", strtotime($post['date_time'])); ?></div>
 
-									<div class="blog-post__info-comment-count"><a href="#!">2 комментария</a></div>
+									<?php if (count($comments)>0) { ?>
+									<div class="blog-post__info-comment-count">
+										<a href="#comments"><?php commentNumber(count($comments));?></a>
+									</div>
+									<?php } ?>
 
 								</div>
 							</div>
@@ -34,56 +38,108 @@
 								<img class="blog-post__image" src="<?=HOST?>usercontent/blog-no-foto.jpg" alt="<?=$post->title?>" />
 							<?php } ?>
 
-						<!--	<img class="blog-post__image" src="<?=HOST?>usercontent/blog/<?=$post['post_img']?>" />  -->
-
 							<div class="blog-post__content">
 								<?=$post['text']?>
 							</div>
 						</div>
+
 						<div class="blog__buttons mt-30 mb-35">
-							<div class="button__arrow-wrap"><a class="button button-backward" href="#!">Назад</a><i class="fas fa-arrow-left"></i></div>
-							<div class="button__arrow-wrap"><a class="button button-forward" href="#!">Вперед</a><i class="fas fa-arrow-right"></i></div>
+
+							<div class="button__arrow-wrap">
+								<a class="button button-backward" href="#!">Назад</a><i class="fas fa-arrow-left"></i>
+							</div>
+
+							<div class="button__arrow-wrap">
+								<a class="button button-forward" href="#!">Вперед</a><i class="fas fa-arrow-right"></i>
+							</div>
+
 						</div>
-						<div class="two-comments__title">2 комментария</div>
+
+						<?php if (count($comments)>0) { ?>
+							<div class="two-comments__title" id="comments"><?php commentNumber(count($comments));?></div>
+						<?php }  ?>
+
+						<?php foreach ($comments as $comment)  {  ?>
+
 						<div class="two-comments-container">
 							<div class="two-comments-container__avatar">
-								<div class="avatar"><img src="../img/avatars/avatar-2.png" /></div>
+								<div class="avatar">
+									<?php if ($comment['avatar_small'] != "")  {  ?>
+										<img src="<?=HOST?>usercontent/avatar/<?=$comment['avatar_small']?>" 
+											alt="<?=HOST?>usercontent/avatar/no-avatar2.jpg" />
+									<?php  } ?>
+								</div>
 							</div>
 							<div class="two-comments-container-block">
 								<div class="two-comments-container-block-wrap">
-									<div class="two-comments-container-block-wrap__name">Джон До</div>
-									<div class="two-comments-container-block-wrap__date"><i class="far fa-clock two-comments-container-block-wrap-icon"></i>05 Мая 2017 года в 15:45</div>
+
+									<div class="two-comments-container-block-wrap__name">
+									   <?=$comment['name']?> 
+									   <?=$comment['surname']?>
+									</div>
+
+									<div class="two-comments-container-block-wrap__date">
+										<i class="far fa-clock two-comments-container-block-wrap-icon"></i>
+									   <?=$comment['date_time']?>
+									</div>
 								</div>
-								<div class="two-comments-container-block__message">Замечательный парк, обязательно отправлюсь туда этим летом.</div>
+								<p class="two-comments-container-block__message">
+								<?=$comment['text']?>
+								</p>
 							</div>
 						</div>
-						<div class="two-comments-container">
-							<div class="two-comments-container__avatar">
-								<div class="avatar"><img src="../img/avatars/avatar-3.png" /></div>
-							</div>
-							<div class="two-comments-container-block">
-								<div class="two-comments-container-block-wrap">
-									<div class="two-comments-container-block-wrap__name">Джон До</div>
-									<div class="two-comments-container-block-wrap__date"><i class="far fa-clock two-comments-container-block-wrap-icon"></i>05 Мая 2017 года в 15:45</div>
-								</div>
-								<div class="two-comments-container-block__message">Замечательный парк, обязательно отправлюсь туда этим летом.</div>
-							</div>
-						</div>
+
+						<?php }  ?>
+
+						<?php if (isLoggedIn())  { ?>
+						<!-- Добавление комментария -->
 						<div class="comment mt-35 mb-120">
+							
 							<div class="leave-comment-title">Оставить комментарий</div>
+
 							<div class="leave-comment">
+
 								<div class="leave-comment-avatar">
-									<div class="avatar"><img src="../img/avatars/avatar-1.jpg" /></div>
+									<div class="avatar">
+
+									<?php if ($_SESSION['logged_user']['avatar_small'] != "")  {  ?>
+										<img src="<?=HOST?>usercontent/avatar/<?=$_SESSION['logged_user']['avatar_small']?>" 
+											alt="<?=HOST?>usercontent/avatar/no-avatar2.jpg" />
+									<?php  } ?>
+
+									</div>
 								</div>
-								<form class="leave-comment-form">
-									<div class="leave-comment-form__name">Юрий Ключевский</div>
-									<div class="notification__error">Комментарий не может быть пустым.</div>
-									<div class="mb-10"></div><textarea class="textarea" type="text" placeholder="Присоединиться к обсуждению..."></textarea>
-									<div class="mb-10"></div><input class="button" type="submit" value="Опубликовать" name="button" />
+								<form class="leave-comment-form" id="comment-form" method="POST"
+										action="<?=HOST?>blog/post?id=<?=$post['id']?>">
+
+									<div class="leave-comment-form__name">
+										<?=$_SESSION['logged_user']['name']?> 
+										<?=$_SESSION['logged_user']['surname']?>	
+									</div>
+
+									<div class="notification__error" style="display: none;">Комментарий не может быть пустым.</div>
+									<div class="mb-10"></div>
+										<textarea class="textarea" type="text" name="commentText"></textarea>
+									<div class="mb-10"></div>
+									<input type="hidden" value="newComment" name="addComment">
+									<input class="button comment-add__button" type="submit" value="Опубликовать" name="addComment" />
 								</form>
-							</div>
+
+							
 						</div>
+						
 					</div>
+
+						<?php } else {?>
+
+									<div class="comment__register text-center">
+										<a href="<?=HOST?>login">Войдите</a> или 
+										<a href="<?=HOST?>registration">зарегистрируйтесь</a>
+										<br />чтобы оставить комментарий
+									</div>
+						<?php } ?>
+
 				</div>
+						
 			</div>
 		</div>
