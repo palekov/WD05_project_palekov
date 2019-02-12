@@ -56,6 +56,7 @@ switch ( $uri[0]) {
 		include ROOT . "modules/contacts/index.php";
 		break;
 
+// -------------------  Blog ------------------
 	case 'blog':
 		include ROOT . "modules/blog/index.php";
 		break;
@@ -90,6 +91,19 @@ switch ( $uri[0]) {
 
 	case 'blog/category-delete':
 		include ROOT . "modules/categories/delete.php";
+		break;
+
+	// -------------  Contacts ---------------
+	case 'contacts':
+		include ROOT . "modules/contacts/index.php";
+		break;
+
+	case 'contacts-edit':
+		include ROOT . "modules/contacts/edit.php";
+		break;
+
+	case 'messages':
+		include ROOT . "modules/contacts/messages.php";
 		break;
 
 	default:

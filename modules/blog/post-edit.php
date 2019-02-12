@@ -6,6 +6,7 @@ if ( !isAdmin() ) {
 }
 
 $title = "Редактироваить пост";
+
 $post = R::load('posts', $_GET['id']);
 $cats =R::find('categories', 'ORDER BY cat_title ASC');
 if ( isset($_POST['postUpdate']) ) {

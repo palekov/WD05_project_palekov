@@ -1,17 +1,10 @@
 <?php
 
-if (!isAdmin()) {
-	header("Location: " . HOST);
-	die();
-}
-
-$title = "Категории блога";
-
-$cats = R::find('categories', 'ORDER BY id ASC');
+$title = "Сообщения";
 
 ob_start();
 include ROOT . "templates/_parts/_header.tpl";
-include ROOT . "templates/categories/all.tpl";
+include ROOT . "templates/contacts/messages.tpl";
 $content = ob_get_contents();
 ob_end_clean();
 

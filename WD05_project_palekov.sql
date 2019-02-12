@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Фев 10 2019 г., 11:10
+-- Время создания: Фев 12 2019 г., 21:41
 -- Версия сервера: 5.6.41
 -- Версия PHP: 5.5.38
 
@@ -85,6 +85,33 @@ INSERT INTO `comments` (`id`, `post_id`, `user_id`, `text`, `date_time`) VALUES
 (1, 20, 27, 'Замечательный парк, обязательно отправлюсь туда этим летом.', '2019-02-09 15:57:40'),
 (2, 20, 22, 'Бабушка и мама поговаривали о том, что пусть уж лучше идёт на филологический, если нервы ей не позволят заниматься музыкой дальше.', '2019-02-09 23:18:25'),
 (3, 22, 27, 'В просторной фотостудии найдётся реквизит для создания самых ярких образов, а интерьеры подчеркнут смелые идеи моделей. Пополните фотоальбом по специальной цене.', '2019-02-10 10:26:00');
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `contacts`
+--
+
+CREATE TABLE `contacts` (
+  `id` int(11) NOT NULL,
+  `email` varchar(191) DEFAULT NULL,
+  `phone` double DEFAULT NULL,
+  `address` varchar(191) DEFAULT NULL,
+  `name` varchar(191) DEFAULT NULL,
+  `surname` varchar(191) DEFAULT NULL,
+  `skype` varchar(191) DEFAULT NULL,
+  `vk` varchar(191) DEFAULT NULL,
+  `fb` varchar(191) DEFAULT NULL,
+  `github` varchar(191) DEFAULT NULL,
+  `twitter` varchar(191) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `contacts`
+--
+
+INSERT INTO `contacts` (`id`, `email`, `phone`, `address`, `name`, `surname`, `skype`, `vk`, `fb`, `github`, `twitter`) VALUES
+(1, 'palekov-2011@mail.ru', 322332223312, 'addreesss', 'Александр', 'Палеков', '', 'https://vk.com/id4582640', 'https://web.facebook.com/alexander.palekov.7', 'https://github.com/palekov', '');
 
 -- --------------------------------------------------------
 
@@ -172,6 +199,12 @@ ALTER TABLE `comments`
   ADD KEY `index_foreignkey_comments_user` (`user_id`);
 
 --
+-- Индексы таблицы `contacts`
+--
+ALTER TABLE `contacts`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Индексы таблицы `posts`
 --
 ALTER TABLE `posts`
@@ -205,6 +238,12 @@ ALTER TABLE `categories`
 --
 ALTER TABLE `comments`
   MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT для таблицы `contacts`
+--
+ALTER TABLE `contacts`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT для таблицы `posts`
