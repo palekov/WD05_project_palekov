@@ -90,6 +90,7 @@
 					</div>
 				<?php }?>
 		</div>
+
 		<div class="col-md-4">
 			<form id="formComment" enctype="multipart/form-data" class="form-contact" method="POST" action="<?=HOST?>contacts">
 				<div class="form-contact__title">Связаться со мной</div>
@@ -104,14 +105,14 @@
 					<input name="name" class="input-text" type="text" placeholder="Введите имя" id="emptyname">
 				</div>
 				<div class="form-contact__email">
-					<input name="email" class="input-text" type="text" placeholder="Email" id="emptyemail">
+					<input name="email" class="input-text" type="email" placeholder="Email" id="emptyemail">
 				</div>
 				<div class="form-contact__message">
 					<textarea name="message" class="textarea" type="text" placeholder="Сообщение" id="emptymessage"></textarea>
 				</div>
 				<div class="form-contact__load-file">
 					<div class="load-file-title">Прикрепить файл </div>
-					<div class="load-file-opis">jpg, png, pdf, doc, весом до 2Мб.</div>
+					<div class="load-file-opis">jpg, png, pdf, doc, размером до 4Мб.</div>
 					<div class="load-file-fieldset">
 						<input class="inputfile inputfile-rad" id="file" type="file" name="file">
 						<label for="file">Выбрать файл</label>
