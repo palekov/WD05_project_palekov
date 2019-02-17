@@ -93,6 +93,27 @@ switch ( $uri[0]) {
 		include ROOT . "modules/categories/delete.php";
 		break;
 
+// -------------------  About ------------------
+	case 'about':
+		include ROOT . "modules/about/index.php";
+		break;
+
+	case 'edit-text':
+		include ROOT . "modules/about/edit-text.php";
+		break;
+
+	case 'edit-skills':
+		include ROOT . "modules/about/edit-skills.php";
+		break;
+
+	case 'edit-jobs':
+		include ROOT . "modules/about/edit-jobs.php";
+		break;
+
+	case 'about-jobs-delete':
+		include ROOT . "modules/about/about-jobs-delete.php";
+		break;
+
 	// -------------  Contacts ---------------
 	case 'contacts':
 		include ROOT . "modules/contacts/index.php";

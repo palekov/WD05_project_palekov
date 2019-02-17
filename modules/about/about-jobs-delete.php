@@ -1,15 +1,24 @@
 <?php 
-// echo "<pre>";
-// print_r($_POST);
-// echo "</pre>";
-$title ="Об авторе";
-$about = R::load('about', 2);
-$skills = R::load('skills', 1);
-$jobs = R::find('jobs', 'ORDER BY id DESC');
+if ( !isAdmin() ) {
+	header('Location: ' . HOST);
+	die();
+}
+$title = "Удалить пост о работе";
+$jobs = R::load('jobs', $_GET['id']);
+
+print_r($_POST);
+
+if ( isset($_POST['jobDelete']) ) {
+	
+	R::trash($jobs);	
+	header('Location: ' . HOST . "edit-jobs?result=jobsDeleted");
+	exit();
+	
+}
 // готовим контент для центральной части
 ob_start(); // включает буферизацию вывода.
 include ROOT . "templates/_parts/_header.tpl";
-include ROOT . "templates/about/about.tpl";
+include ROOT . "templates/about/delete-jobs.tpl";
 $content = ob_get_contents(); //Возвращает содержимое буфера вывода
 ob_clean(); //удаляем содержимое буфера вывода. 
 // Выводим шаблоны
