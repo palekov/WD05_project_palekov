@@ -11,7 +11,7 @@
 						<div class="footer-nav">
 							<div class="footer-nav__item"><a href="<?=HOST?>">Главная</a></div>
 							<div class="footer-nav__item"><a href="<?=HOST?>about">Обо мне</a></div>
-							<div class="footer-nav__item"><a href="<?=HOST?>portfolio">Работы</a></div>
+						<!--	<div class="footer-nav__item"><a href="<?=HOST?>portfolio">Работы</a></div> -->
 							<div class="footer-nav__item"><a href="<?=HOST?>blog">Блог</a></div>
 							<div class="footer-nav__item"><a href="<?=HOST?>contacts">Контакты</a></div>
 						</div>

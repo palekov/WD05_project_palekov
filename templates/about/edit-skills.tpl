@@ -77,6 +77,8 @@
 						</div>
 					</div> -->
 						<?php skillIteem('mysql', 'MySql')?>
+
+						<?php skillIteem('java', 'Java')?>
 					<!-- <div class="col-md-3 technology-edit-form__item">
 						<label class="label">MySql
 							<input class="input-text input-text--width" type="text" placeholder="0" name="mysql">

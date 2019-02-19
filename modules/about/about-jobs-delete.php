@@ -6,8 +6,6 @@ if ( !isAdmin() ) {
 $title = "Удалить пост о работе";
 $jobs = R::load('jobs', $_GET['id']);
 
-print_r($_POST);
-
 if ( isset($_POST['jobDelete']) ) {
 	
 	R::trash($jobs);	

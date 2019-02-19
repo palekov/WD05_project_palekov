@@ -110,6 +110,10 @@ switch ( $uri[0]) {
 		include ROOT . "modules/about/edit-jobs.php";
 		break;
 
+	case 'update-jobs':
+		include ROOT . "modules/about/update-jobs.php";
+		break;
+
 	case 'about-jobs-delete':
 		include ROOT . "modules/about/about-jobs-delete.php";
 		break;

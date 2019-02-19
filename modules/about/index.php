@@ -3,7 +3,11 @@
 // print_r($_POST);
 // echo "</pre>";
 $title ="Об авторе";
-$about = R::load('about', 2);
+
+$about = R::findOne('about',1);
+
+//$about = R::load('about', 2);
+
 $skills = R::load('skills', 1);
 $jobs = R::find('jobs', 'ORDER BY id DESC');
 // готовим контент для центральной части
