@@ -1473,10 +1473,10 @@ a.message-author--email {
   color: #383737;
 }
 .footer {
-  height: 305px;
+  height: 220px;
   width: 100%;
   background-color: #252525;
-  padding-top: 60px;
+  padding-top: 40px;
 }
 .footer p {
   font-family: 'Open Sans', sans-serif;

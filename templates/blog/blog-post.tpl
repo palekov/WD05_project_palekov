@@ -43,7 +43,7 @@
 							</div>
 						</div>
 
-						<div class="blog__buttons mt-30 mb-35">
+				<!--	<div class="blog__buttons mt-30 mb-35">
 
 							<div class="button__arrow-wrap">
 								<a class="button button-backward" href="#!">Назад</a><i class="fas fa-arrow-left"></i>
@@ -53,7 +53,7 @@
 								<a class="button button-forward" href="#!">Вперед</a><i class="fas fa-arrow-right"></i>
 							</div>
 
-						</div>
+						</div> -->
 
 						<?php if (count($comments)>0) { ?>
 							<div class="two-comments__title" id="comments"><?php commentNumber(count($comments));?></div>
