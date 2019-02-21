@@ -1,5 +1,5 @@
 
-<form class="registration-form" method="POST" action="<?=HOST?>registration">
+<form class="registration-form" method="POST" action="<?=HOST?>registration" novalidate>
 
 	<h1 class="title-1 registration-form__caption">Регистрация</h1>
 	

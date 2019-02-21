@@ -23,6 +23,7 @@
 						</div>						
 					<?php endif ?>
 				</div>
+				<br>
 				<div class="about-me-description__content about-text">
 					<?=$about->description?>
 				</div>

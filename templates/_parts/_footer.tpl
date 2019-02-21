@@ -18,11 +18,13 @@
 					</div>
 					<div class="col-md-4">
 						<div class="footer__social-icons">
-							<a href="#!" target="_blank"><i class="fab fa-vk"></i></a>
-							<a href="#!" target="_blank"><i class="fab fa-twitter"></i></a>
+							<a href="https://vk.com/id4582640" target="_blank"><i class="fab fa-vk"></i></a>
+				<!--			<a href="#!" target="_blank"><i class="fab fa-twitter"></i></a>
 							<a href="#!" target="_blank"><i class="fab fa-youtube"></i></a>
-							<a href="#!" target="_blank"><i class="fab fa-instagram"></i></a>
-							<a href="#!" target="_blank"><i class="fab fa-facebook-f"></i></a>
+							<a href="#!" target="_blank"><i class="fab fa-instagram"></i></a> -->
+							<a href="https://web.facebook.com/alexander.palekov.7" target="_blank"><i class="fab fa-facebook"></i></a>
+							<a href="https://www.linkedin.com/in/alexander-palekov" target="_blank"><i class="fab fa-linkedin"></i></a>
+
 						</div>
 					</div>
 				</div>

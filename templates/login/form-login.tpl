@@ -12,9 +12,7 @@
 			
 		</div>
 
-	<div class="registration-form__email">
-		<input name="email" class="input-text" type="email" placeholder="E-mail" value="info@mail.com" />
-	</div>
+		<input name="email" class="input-text registration-form__email" type="email" placeholder="E-mail" value="info@mail.com" />
 
 	<div class="registration-form__password">
 		<input name="password" class="input-text" type="password" placeholder="Пароль" value="123456" />

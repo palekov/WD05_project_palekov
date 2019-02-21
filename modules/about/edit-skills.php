@@ -1,13 +1,17 @@
 <?php 
+
 if ( !isAdmin() ) {
 	header("Location: " . HOST);
 	die();
 }
+
 $skills = R::load('skills', 1);
-$title = "Редактировать - О авторе";
+
+$title = "Редактировать - Об авторе";
+
 if ( isset($_POST['skillsUpdate'])) {  
 	foreach ($_POST as $index => $value) {
-		if ( intval($value) > 100 )  {
+		if (( intval($value) > 100 ) || ( intval($value) < 0 )) {
 			$errors[] = ['title' => "Для поля $index введите число от 0 до 100" ];
 		}
 	}
@@ -34,6 +38,7 @@ if ( isset($_POST['skillsUpdate'])) {
 		exit();
 	}
 }
+
 // готовим контент для центральной части
 ob_start(); // включает буферизацию вывода.
 include ROOT . "templates/_parts/_header.tpl";

@@ -1,15 +1,26 @@
 <?php
 
 $title = "Регистрация";
+$email = false;
 
 // $currentUser = $_SESSION['logged_user'];
 
 // --- Если форма отправлена - делаем регистрацию ---
 if( isset($_POST['register']) )  {
 
-	if ( trim($_POST['email']) == '')  {
-		$errors[] = ['title' => 'Введите Email!'];
-	}
+	if (trim($_POST['email']) == '') {
+        $errors[] = ['title' => 'Введите Email !'];
+    } else { 
+        
+        $email = $_POST['email'];
+
+        if (preg_match("/^(?:[a-z0-9]+(?:[-_.]?[a-z0-9]+)?@[a-z0-9_.-]+(?:\.?[a-z0-9]+)?\.[a-z]{2,5})$/i", $email)) 
+        {
+            $email = true;
+        } else {
+            $errors[] = ['title' => 'Неверный формат email !'];
+        }
+    }
 
 	if ( trim($_POST['password']) == '')  {
 		$errors[] = ['title' => 'Введите Пароль!'];
@@ -18,7 +29,7 @@ if( isset($_POST['register']) )  {
 	// Проверка что пользователь уже существует
 	if ( R::count('users', 'email = ?', array($_POST['email']) ) > 0 ) {
 		$errors[]  = [ 
-						'title' => 'Пользователь с там email уже зарегистрирован', 
+						'title' => 'Пользователь с таким Email уже зарегистрирован!', 
 						'desc' => '<p>Используйте другой Email адрес, или воспользуйтесь восстановлением пароля.</p>', 
 					];
 	}
