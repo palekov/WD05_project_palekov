@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Фев 19 2019 г., 22:27
+-- Время создания: Фев 24 2019 г., 09:46
 -- Версия сервера: 5.6.41
 -- Версия PHP: 5.5.38
 
@@ -150,9 +150,9 @@ CREATE TABLE `messages` (
 
 INSERT INTO `messages` (`id`, `email`, `name`, `message`, `date_time`, `message_file_name_original`, `message_file`) VALUES
 (1, 'mail@grt.by', 'Василий', 'Сообщаю вам это сообщение в надежде на общение!', '2019-02-13 15:09:47', NULL, NULL),
-(2, 'vh', 'Виктор', 'hjk', '2019-02-13 15:11:47', NULL, NULL),
-(3, 'vvv@bbb.com', 'Володя', 'Some message for the forsage...', '2019-02-13 15:16:51', '320-216137360.jpg', '732459739.jpg'),
-(4, 'vvv@bbb.com', 'Володя', 'Some message for the forsage...', '2019-02-13 15:18:22', '320-216137360.jpg', '576145763.jpg');
+(4, 'vvv@bbb.com', 'Володя', 'Some message for the forsage...', '2019-02-13 15:18:22', '320-216137360.jpg', '576145763.jpg'),
+(5, 'volodya@mail.com', 'Володя', 'Привет! Это сообщение от Володи!', '2019-02-23 21:43:37', 'CAM03275.jpg', '1081438400.jpg'),
+(6, 'dmitro@gmail.com', 'Дмитрий', 'Привет! Как поживаешь?', '2019-02-23 22:25:55', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -192,7 +192,7 @@ INSERT INTO `posts` (`id`, `title`, `text`, `author_id`, `date_time`, `post_img`
 
 CREATE TABLE `skills` (
   `id` int(11) UNSIGNED NOT NULL,
-  `html` int(11) UNSIGNED DEFAULT NULL,
+  `html` double DEFAULT NULL,
   `css` int(11) UNSIGNED DEFAULT NULL,
   `js` int(11) UNSIGNED DEFAULT NULL,
   `jquery` int(11) UNSIGNED DEFAULT NULL,
@@ -210,7 +210,7 @@ CREATE TABLE `skills` (
 --
 
 INSERT INTO `skills` (`id`, `html`, `css`, `js`, `jquery`, `php`, `mysql`, `git`, `gulp`, `npm`, `yarn`, `java`) VALUES
-(1, 35, 25, 15, 15, 25, 15, 25, 15, 15, 0, 20);
+(1, 75, 25, 15, 15, 25, 15, 25, 15, 15, 0, 20);
 
 -- --------------------------------------------------------
 
@@ -241,7 +241,7 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `email`, `password`, `role`, `name`, `surname`, `city`, `country`, `avatar`, `avatar_small`, `recovery_code`, `recovery_code_times`, `secondname`) VALUES
 (22, 'info@mail.com', '$2y$10$a70VAepekLMt6mnZQlZv6u7QyTChY2pwuehPsWzrj4MfSYw8R2hfO', 'admin', 'Александр', 'Палеков', 'Витебск', 'Беларусь', '1357929123.jpg', '48-1357929123.jpg', 'Y3udB2OZovgpl5f', 0, NULL),
 (24, 'user@mail.com', '$2y$10$UpQnTJ.daXchDrshEDK5FOvGBDFED4U9TIQ0wexp52R7v8r1qLswa', 'user', 'Александр', 'Палеков', 'Витебск', 'Беларусь', '1369617092.jpg', '48-1369617092.jpg', NULL, NULL, NULL),
-(27, 'info3@mail.com', '$2y$10$xRu4Eja4WjAS4HRGBCgr0Ov7axSf63p5D6peH7MfzjJzOYQq6gcje', 'user', 'Василий', 'Тёркин', '', '', '816883031.jpg', '48-816883031.jpg', NULL, NULL, 'Тёркин');
+(27, 'info3@mail.com', '$2y$10$xRu4Eja4WjAS4HRGBCgr0Ov7axSf63p5D6peH7MfzjJzOYQq6gcje', 'user', 'Василий', 'Тёркин', 'Витебск', 'Беларусь', '1243793362.jpg', '48-1243793362.jpg', NULL, NULL, 'Тёркин');
 
 --
 -- Индексы сохранённых таблиц
@@ -312,19 +312,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT для таблицы `about`
 --
 ALTER TABLE `about`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT для таблицы `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT для таблицы `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT для таблицы `contacts`
@@ -342,7 +342,7 @@ ALTER TABLE `jobs`
 -- AUTO_INCREMENT для таблицы `messages`
 --
 ALTER TABLE `messages`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT для таблицы `posts`

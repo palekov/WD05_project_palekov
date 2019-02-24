@@ -31,6 +31,16 @@ $sql = '
 
 	$comments = R::getAll($sql);
 
+	$postsId = R::getCol('SELECT id FROM posts');
+
+	foreach ($postsId as $index => $id) {
+		if ($id == $post['id']) {
+			@$nextId = $postsId[$index + 1];
+			@$prevId = $postsId[$index - 1];
+			break;
+		}
+	}
+
 if (isset($_POST['addComment']))  {
 	if (trim($_POST['commentText']) == '') {
 		$errors[] = ['title' => 'Введите текст комментария!'];

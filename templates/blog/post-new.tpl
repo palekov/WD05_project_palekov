@@ -11,7 +11,7 @@
 
 							<div class="post-add-form__name">
 								<label class="label">Название
-									<input class="input-text" type="text" placeholder="Введите название поста" name="postTitle" />
+									<input class="input-text" type="text" placeholder="Введите название поста" value="<?=(trim(@$_POST['postTitle']) != '' ) ? $_POST['postTitle'] : '';?>"name="postTitle" />
 								</label>
 							</div>
 
@@ -43,7 +43,7 @@
 							</div>
 							<div class="post-add-form__textarea">
 								<label class="label">Содержание
-									<textarea id="ckEditor" class="textarea" type="text" placeholder="Введите содержание поста" name="postText"></textarea>
+									<textarea id="ckEditor" class="textarea" type="text" placeholder="Введите содержание поста" value="<?=(trim(@$_POST['postText']) != '' ) ? $_POST['postText'] : '';?>" name="postText"></textarea>
 								</label>
 							</div>
 

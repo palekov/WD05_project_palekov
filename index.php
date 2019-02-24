@@ -131,6 +131,10 @@ switch ( $uri[0]) {
 		include ROOT . "modules/contacts/messages.php";
 		break;
 
+	case 'messages-delete':
+		include ROOT . "modules/contacts/messages-delete.php";
+		break;
+
 	default:
 		include ROOT . "modules/main/index.php";
 		break;
